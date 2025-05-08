@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GAMEHOUSE - Tu espacio gamer en Cosquin</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="sticky-top shadow-sm" style="background-color: #002654;">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand d-flex align-items-center" href="#">
+            <img src="images/logo.jpg" alt="GAMEHOUSE" class="logo me-2">
+            <div>
+              <h1 class="mb-0 fs-4">GAMEHOUSE</h1>
+              <p class="mb-0 small opacity-75 fst-italic d-none d-sm-block">Tu espacio gamer en Cosquin</p>
+            </div>
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
+              <li class="nav-item"><a class="nav-link" href="#servicios">Servicios</a></li>
+              <li class="nav-item"><a class="nav-link" href="#productos">Reservas</a></li>
+              <li class="nav-item"><a class="nav-link" href="#juegosdigitales">Juegos Digitales</a></li>
+              <li class="nav-item"><a class="nav-link" href="#galeria">Galería</a></li>
+              <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="inicio" class="hero-section">
+    <div class="container h-100">
+      <div class="row h-100 align-items-center">
+        <div class="col-12 text-center text-white">
+          <h2 class="display-4 fw-bold mb-3">¡Bienvenido a GAMEHOUSE!</h2>
+          <p class="lead mb-4">Disfrutá de videojuegos como FIFA, Fortnite, Mortal Kombat y más...</p>
+          <a href="#productos" class="btn btn-primary btn-lg px-4 pulse">Reservar ahora</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="servicios" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="section-title text-center mb-5">Nuestros Servicios</h2>
+      <div class="row g-4">
+        <!-- PS4 SIMULTANEO -->
+        <div class="col-md-6 col-lg-3">
+          <div class="card service-card h-100 hover-lift">
+            <div class="card-body text-center">
+              <i class="fas fa-gamepad text-primary mb-3" style="font-size: 2rem;"></i>
+              <h3 class="card-title text-primary">PS4 SIMULTÁNEO</h3>
+              <p class="card-text">Juga con dos PS4 a la vez con tu amigo</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- PS4 2v2 -->
+        <div class="col-md-6 col-lg-3">
+          <div class="card service-card h-100 hover-lift">
+            <div class="card-body text-center">
+              <i class="fas fa-users text-primary mb-3" style="font-size: 2rem;"></i>
+              <h3 class="card-title text-primary">PS4 2v2</h3>
+              <p class="card-text">Disfrutá con tus amigos en un poderoso 2 contra 2</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Torneos -->
+        <div class="col-md-6 col-lg-3">
+          <div class="card service-card h-100 hover-lift">
+            <div class="card-body text-center">
+              <i class="fas fa-trophy text-primary mb-3" style="font-size: 2rem;"></i>
+              <h3 class="card-title text-primary">Torneos</h3>
+              <p class="card-text">Torneos los fin de semana (Estar atento al Instagram)</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Reparaciones -->
+        <div class="col-md-6 col-lg-3">
+          <div class="card service-card h-100 hover-lift">
+            <div class="card-body text-center">
+              <i class="fas fa-tools text-primary mb-3" style="font-size: 2rem;"></i>
+              <h3 class="card-title text-primary">Reparaciones</h3>
+              <p class="card-text">Reparación profesional de consolas y joysticks</p>
+              <button class="btn btn-sm btn-outline-primary mt-2" data-bs-toggle="modal" data-bs-target="#reparacionesModal">
+                Más info
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal Reparaciones -->
+  <div class="modal fade" id="reparacionesModal" tabindex="-1" aria-labelledby="reparacionesModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header bg-primary text-white">
+          <h5 class="modal-title" id="reparacionesModalLabel">Servicio de Reparaciones</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <h6 class="text-primary">Reparamos:</h6>
+          <ul>
+            <li>Consolas PS4/PS5 (problemas de lectura, overheating, etc.)</li>
+            <li>Joysticks (drift, botones pegados, conexiones)</li>
+            <li>Fuentes de alimentación</li>
+            <li>Problemas de hardware en general</li>
+          </ul>
+          <hr>
+          <h6 class="text-primary">Garantía:</h6>
+          <p>Todas nuestras reparaciones incluyen 30 días de garantía</p>
+          <h6 class="text-primary">Contacto:</h6>
+          <p>Envíanos un WhatsApp al 3513525612 para consultar por tu reparación</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+          <a href="https://wa.me/543513525612" target="_blank" class="btn btn-success">
+            <i class="fab fa-whatsapp"></i> Contactar
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Booking Section -->
+  <section id="productos" class="py-5">
+    <div class="container">
+      <h2 class="section-title text-center mb-5">Reservá con tus amigos</h2>
+      <div class="row g-4">
+        <div class="col-lg-8">
+          <div class="row g-4">
+            <!-- PS4 Normal -->
+            <div class="col-md-6">
+              <div class="card booking-card h-100 hover-lift">
+                <div class="card-body">
+                  <h3 class="card-title">PS4 Pro</h3>
+                  <p class="price-tag">$3,500 <span class="price-unit">/hora</span></p>
+                  
+                  <div class="mb-3">
+                    <label for="horaInicio" class="form-label">Desde:</label>
+                    <input type="time" id="horaInicio" class="form-control">
+                  </div>
+                  
+                  <div class="mb-3">
+                    <label for="horaFin" class="form-label">Hasta:</label>
+                    <input type="time" id="horaFin" class="form-control">
+                  </div>
+                  
+                  <div class="mb-3">
+                    <label for="joysticks" class="form-label">Joysticks extra:</label>
+                    <select id="joysticks" class="form-select">
+                      <option value="0">0 extra ($0)</option>
+                      <option value="1">1 extra (+$300)</option>
+                      <option value="2">2 extra (+$600)</option>
+                    </select>
+                  </div>
+                  
+                  <p class="text-muted small mb-3">* Incluye 2 joysticks de base</p>
+                  
+                  <button onclick="agregarReservaPS4()" class="btn btn-primary w-100">Agregar al carrito</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- PS4 Simultaneo -->
+            <div class="col-md-6">
+              <div class="card booking-card h-100 hover-lift">
+                <div class="card-body">
+                  <h3 class="card-title">PS4 Simultáneo</h3>
+                  <p class="price-tag">$5,000 <span class="price-unit">/hora</span></p>
+                  
+                  <div class="mb-3">
+                    <label for="horaInicioSimultaneo" class="form-label">Desde:</label>
+                    <input type="time" id="horaInicioSimultaneo" class="form-control">
+                  </div>
+                  
+                  <div class="mb-3">
+                    <label for="horaFinSimultaneo" class="form-label">Hasta:</label>
+                    <input type="time" id="horaFinSimultaneo" class="form-control">
+                  </div>
+                  
+                  <div class="mb-3">
+                    <label for="joysticksSimultaneo" class="form-label">Joysticks extra:</label>
+                    <select id="joysticksSimultaneo" class="form-select">
+                      <option value="0">0 extra ($0)</option>
+                      <option value="1">1 extra (+$300)</option>
+                      <option value="2">2 extra (+$600)</option>
+                    </select>
+                  </div>
+                  
+                  <p class="text-muted small mb-3">* Incluye 4 joysticks de base (2 por consola)</p>
+                  
+                  <button onclick="agregarReservaSimultaneo()" class="btn btn-primary w-100">Agregar al carrito</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- PS4 2v2 -->
+            <div class="col-md-6">
+              <div class="card booking-card h-100 hover-lift">
+                <div class="card-body">
+                  <h3 class="card-title">PS4 2v2</h3>
+                  <p class="price-tag">$4,000 <span class="price-unit">/hora</span></p>
+                  
+                  <div class="mb-3">
+                    <label for="horaInicio2v2" class="form-label">Desde:</label>
+                    <input type="time" id="horaInicio2v2" class="form-control">
+                  </div>
+                  
+                  <div class="mb-3">
+                    <label for="horaFin2v2" class="form-label">Hasta:</label>
+                    <input type="time" id="horaFin2v2" class="form-control">
+                  </div>
+                  
+                  <p class="text-muted small mb-3">* Incluye 4 joysticks para el modo 2v2</p>
+                  
+                  <button onclick="agregarReserva2v2()" class="btn btn-primary w-100">Agregar al carrito</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Torneo -->
+            <div class="col-md-6">
+              <div class="card booking-card h-100 hover-lift">
+                <div class="card-body">
+                  <h3 class="card-title">Torneo Anticipado</h3>
+                  <p class="price-tag">$3,000 <span class="price-unit">/inscripción</span></p>
+                  
+                  <div class="mb-3">
+                    <label for="nombreTorneo" class="form-label">Nombre del torneo:</label>
+                    <input type="text" id="nombreTorneo" class="form-control" placeholder="Ej: FIFA 24 - Sábado 15">
+                  </div>
+                  
+                  <div class="mb-3">
+                    <label for="participantes" class="form-label">Número de participantes:</label>
+                    <select id="participantes" class="form-select">
+                      <option value="1">1 participante ($3,000)</option>
+                      <option value="2">2 participantes ($6,000)</option>
+                      <option value="3">3 participantes ($9,000)</option>
+                      <option value="4">4 participantes ($12,000)</option>
+                    </select>
+                  </div>
+                  
+                  <button onclick="agregarReservaTorneo()" class="btn btn-primary w-100">Agregar al carrito</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cart Section - Versión corregida -->
+        <div class="col-lg-4">
+          <div class="card cart-card sticky-lg-top" style="top: 100px; margin-bottom: 120px;">
+            <div class="card-body">
+              <h3 class="card-title">Tu Carrito <span id="cart-count" class="badge bg-primary">0</span></h3>
+              <ul id="carrito" class="list-group mb-3" style="max-height: 300px; overflow-y: auto;">
+                <li class="list-group-item empty-cart">Tu carrito está vacío</li>
+              </ul>
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <span class="fw-bold">Total:</span>
+                <span id="total-precio" class="fw-bold">$0</span>
+              </div>
+              <button onclick="enviarPedido()" class="btn btn-success w-100">Enviar por WhatsApp</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contacto" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="section-title text-center mb-5">Contacto</h2>
+      <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+          <div class="card border-0 shadow-sm">
+            <div class="card-body">
+              <div class="contact-info">
+                <div class="d-flex align-items-center mb-3">
+                  <i class="fas fa-map-marker-alt me-3 text-primary"></i>
+                  <p class="mb-0">Galería Luciano I Local 5, Cosquin</p>
+                </div>
+                <div class="d-flex align-items-center mb-3">
+                  <i class="fab fa-whatsapp me-3 text-primary"></i>
+                  <p class="mb-0">WhatsApp: 3513525612</p>
+                </div>
+                <div class="d-flex align-items-center">
+                  <i class="fab fa-instagram me-3 text-primary"></i>
+                  <p class="mb-0">Instagram: @game.house5</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Floating Buttons -->
+  <div id="whatsapp-button" class="float-btn pulse">
+    <a href="https://wa.me/543513525612" target="_blank" title="WhatsApp" class="text-white">
+      <i class="fab fa-whatsapp fa-lg"></i>
+    </a>
+  </div>
+
+  <div id="instagram-button" class="float-btn pulse">
+    <a href="https://instagram.com/game.house5" target="_blank" title="Instagram" class="text-white">
+      <i class="fab fa-instagram fa-lg"></i>
+    </a>
+  </div>
+
+  <!-- Footer -->
+  <footer class="py-3" style="background-color: #002654;">
+    <div class="container text-center text-white">
+      <p class="mb-0">&copy; 2025 GAMEHOUSE | Todos los derechos reservados</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom JS -->
+  <script src="script.js"></script>
+</body>
+</html>
