@@ -1,0 +1,366 @@
+:root {
+  --primary: #002654;       /* Azul francés */
+  --primary-light: #0055a4; /* Azul francés claro */
+  --secondary: #25d366;     /* Verde WhatsApp */
+  --accent: #ff9e00;        /* Naranja acento */
+  --dark: #212529;          /* Negro */
+  --light: #f8f9fa;         /* Blanco */
+  --gray: #6c757d;          /* Gris */
+  --light-gray: #e9ecef;    /* Gris claro */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+  --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+  --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Base Styles */
+body {
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.6;
+  color: var(--dark);
+  background-color: #f5f7fa;
+  margin: 0;
+  padding-bottom: 80px;
+}
+
+/* Header */
+header {
+  background-color: var(--primary);
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: var(--shadow-md);
+  width: 100%;
+}
+
+.logo {
+  height: 50px;
+  width: auto;
+  border-radius: 8px;
+  object-fit: contain;
+}
+
+/* Hero Section */
+.hero-section {
+  background: linear-gradient(rgba(0, 38, 84, 0.8), rgba(0, 85, 164, 0.8)), 
+              url('images/gaming-bg.jpg') center/cover no-repeat;
+  color: white;
+  min-height: 60vh;
+  max-height: 800px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 1;
+}
+
+.hero-section .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* Sections */
+.section-title {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  color: wht;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 4px;
+  background-color: var(--accent);
+  margin: 10px auto 0;
+}
+
+/* Cards */
+.card {
+  border: none;
+  border-radius: 10px;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+.service-card {
+  padding: 25px;
+  text-align: center;
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+}
+
+.booking-card {
+  padding: 25px;
+}
+
+.booking-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Price Tag */
+.price-tag {
+  font-size: 2rem;
+  color: var(--primary);
+  font-weight: bold;
+  text-align: center;
+  margin: 15px 0;
+}
+
+.price-unit {
+  font-size: 1rem;
+  color: var(--gray);
+}
+
+/* Cart */
+.cart-card {
+  position: sticky;
+  top: 100px;
+  z-index: 99;
+  margin-bottom: 120px;
+  transition: all 0.3s ease;
+}
+
+.cart-items {
+  list-style: none;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.cart-items li {
+  padding: 12px;
+  border-bottom: 1px solid var(--light-gray);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: var(--transition);
+}
+
+.cart-items li:hover {
+  background-color: rgba(0, 38, 84, 0.05);
+}
+
+.empty-cart {
+  text-align: center;
+  color: var(--gray);
+  padding: 20px 0 !important;
+}
+
+.cart-total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 15px 0;
+  border-top: 1px solid var(--light-gray);
+  margin-top: 10px;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: center;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-light);
+  transform: translateY(-3px);
+  box-shadow: 0 7px 14px rgba(0, 0, 0, 0.15);
+}
+
+.btn-success {
+  background-color: var(--secondary);
+  color: white;
+}
+
+.btn-success:hover {
+  background-color: #1da851;
+  transform: translateY(-3px);
+}
+
+.btn-block {
+  display: block;
+  width: 100%;
+}
+
+/* Floating Buttons */
+.float-btn {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-lg);
+  z-index: 100;
+  transition: var(--transition);
+  right: 30px;
+}
+
+#whatsapp-button {
+  bottom: 100px;
+  background-color: var(--secondary);
+}
+
+#instagram-button {
+  bottom: 180px;
+  background: linear-gradient(45deg, #405DE6, #C13584);
+}
+
+.float-btn:hover {
+  transform: translateY(-5px) scale(1.1);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Modal Styles */
+.modal-content {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.modal-header {
+  background-color: var(--primary);
+  color: white;
+}
+
+/* Footer */
+footer {
+  background-color: var(--primary);
+  color: white;
+  padding: 1rem 0;
+  position: relative;
+  z-index: 1000;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.pulse:hover {
+  animation: pulse 1.5s infinite;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .header-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .booking-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .hero-section {
+    padding: 80px 20px;
+  }
+  
+  .hero-section h2 {
+    font-size: 2rem;
+  }
+  
+  .float-btn {
+    width: 50px;
+    height: 50px;
+    right: 20px;
+  }
+  
+  #whatsapp-button {
+    bottom: 80px;
+  }
+  
+  #instagram-button {
+    bottom: 140px;
+  }
+  
+  .cart-card {
+    position: relative;
+    top: auto;
+    margin-bottom: 80px;
+  }
+}
+
+@media (max-width: 576px) {
+  .logo {
+    height: 40px;
+  }
+  
+  .hero-section h2 {
+    font-size: 1.8rem;
+  }
+  
+  .section-title {
+    font-size: 1.5rem;
+  }
+  
+  .price-tag {
+    font-size: 1.5rem;
+  }
+  
+  .service-card, .booking-card {
+    padding: 15px;
+  }
+}
+.navbar-dark .navbar-nav .nav-link {
+  color: #ffffff; /* Cambia este valor por el color que prefieras */
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+  color: #ff9900; /* Color al pasar el mouse */
+  opacity: 1;
+}
