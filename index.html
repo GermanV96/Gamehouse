@@ -20,7 +20,7 @@
       <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
           <a class="navbar-brand d-flex align-items-center" href="#">
-            <img src="images/logo.jpg" alt="GAMEHOUSE" class="logo me-2">
+            <img src="images/logo.jpg" alt="GAMEHOUSE" class="logo me-2" style="height: 40px;">
             <div>
               <h1 class="mb-0 fs-4">GAMEHOUSE</h1>
               <p class="mb-0 small opacity-75 fst-italic d-none d-sm-block">Tu espacio gamer en Cosquin</p>
@@ -43,6 +43,8 @@
       </nav>
     </div>
   </header>
+  <!-- Notificación flotante -->
+<div id="notificacion-carrito" class="toast-carrito">¡Agregado al carrito!</div>
 
   <!-- Hero Section -->
   <section id="inicio" class="hero-section">
@@ -57,7 +59,7 @@
     </div>
   </section>
 
-  <!-- Services Section -->
+  <!-- Servicios Section -->
   <section id="servicios" class="py-5 bg-light">
     <div class="container">
       <h2 class="section-title text-center mb-5">Nuestros Servicios</h2>
@@ -123,7 +125,7 @@
         <div class="modal-body">
           <h6 class="text-primary">Reparamos:</h6>
           <ul>
-            <li>Consolas PS4/PS5 (problemas de lectura, overheating, etc.)</li>
+            <li>Consolas PS3/PS4/PS5 (problemas de lectura, overheating, etc.)</li>
             <li>Joysticks (drift, botones pegados, conexiones)</li>
             <li>Fuentes de alimentación</li>
             <li>Problemas de hardware en general</li>
@@ -144,7 +146,7 @@
     </div>
   </div>
 
-  <!-- Booking Section -->
+  <!-- Reservas Section -->
   <section id="productos" class="py-5">
     <div class="container">
       <h2 class="section-title text-center mb-5">Reservá con tus amigos</h2>
@@ -250,7 +252,7 @@
                   
                   <div class="mb-3">
                     <label for="nombreTorneo" class="form-label">Nombre del torneo:</label>
-                    <input type="text" id="nombreTorneo" class="form-control" placeholder="Ej: FIFA 24 - Sábado 15">
+                    <input type="text" id="nombreTorneo" class="form-control" placeholder="Ej: FIFA 25 - Sábado 15 + Nombre">
                   </div>
                   
                   <div class="mb-3">
@@ -270,7 +272,7 @@
           </div>
         </div>
 
-        <!-- Cart Section - Versión corregida -->
+        <!-- Cart Section -->
         <div class="col-lg-4">
           <div class="card cart-card sticky-lg-top" style="top: 100px; margin-bottom: 120px;">
             <div class="card-body">
@@ -290,28 +292,102 @@
     </div>
   </section>
 
-  <!-- Contact Section -->
-  <section id="contacto" class="py-5 bg-light">
+ <section id="juegosdigitales" class="py-5 bg-light">
     <div class="container">
-      <h2 class="section-title text-center mb-5">Contacto</h2>
-      <div class="row justify-content-center">
-        <div class="col-md-8 col-lg-6">
-          <div class="card border-0 shadow-sm">
+      <h2 class="section-title text-center mb-5">Juegos Digitales</h2>
+      <div class="row g-4">
+        <!-- Juego 1 -->
+        <div class="col-md-6 col-lg-3">
+          <div class="card booking-card h-100 hover-lift">
+            <img src="images/juego1.jpg" class="card-img-top" alt="FC25">
             <div class="card-body">
-              <div class="contact-info">
-                <div class="d-flex align-items-center mb-3">
-                  <i class="fas fa-map-marker-alt me-3 text-primary"></i>
-                  <p class="mb-0">Galería Luciano I Local 5, Cosquin</p>
-                </div>
-                <div class="d-flex align-items-center mb-3">
-                  <i class="fab fa-whatsapp me-3 text-primary"></i>
-                  <p class="mb-0">WhatsApp: 3513525612</p>
-                </div>
-                <div class="d-flex align-items-center">
-                  <i class="fab fa-instagram me-3 text-primary"></i>
-                  <p class="mb-0">Instagram: @game.house5</p>
-                </div>
-              </div>
+              <h3 class="card-title">FC25</h3>
+              <p class="price-tag">$35000 <span class="price-unit">/descarga</span></p>
+              <button onclick="agregarJuegoDigital('FC25', 35000)" class="btn btn-primary w-100">Agregar al carrito</button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Juego 2 -->
+        <div class="col-md-6 col-lg-3">
+          <div class="card booking-card h-100 hover-lift">
+            <img src="images/juego2.webp" class="card-img-top" alt="Mortal Kombat XL">
+            <div class="card-body">
+              <h3 class="card-title">Mortal Kombat XL</h3>
+              <p class="price-tag">$20000 <span class="price-unit">/descarga</span></p>
+              <button onclick="agregarJuegoDigital('Mortal Kombat XL', 20000)" class="btn btn-primary w-100">Agregar al carrito</button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Juego 3 -->
+        <div class="col-md-6 col-lg-3">
+          <div class="card booking-card h-100 hover-lift">
+            <img src="images/juego3.jpg" class="card-img-top" alt="Red Dead Redemption 2">
+            <div class="card-body">
+              <h3 class="card-title">Red Dead Redemption 2</h3>
+              <p class="price-tag">$27000 <span class="price-unit">/descarga</span></p>
+              <button onclick="agregarJuegoDigital('Red Dead Redemption 2', 27000)" class="btn btn-primary w-100">Agregar al carrito</button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Juego 4 -->
+        <div class="col-md-6 col-lg-3">
+          <div class="card booking-card h-100 hover-lift">
+            <img src="images/juego4.jpg" class="card-img-top" alt="Call of Duty: Black Ops 6">
+            <div class="card-body">
+              <h3 class="card-title">Call of Duty: Black Ops 6</h3>
+              <p class="price-tag">$40000 <span class="price-unit">/descarga</span></p>
+              <button onclick="agregarJuegoDigital('Call of Duty: Black Ops 6', 40000)" class="btn btn-primary w-100">Agregar al carrito</button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Juego 5 -->
+        <div class="col-md-6 col-lg-3">
+          <div class="card booking-card h-100 hover-lift">
+            <img src="images/juego5.png" class="card-img-top" alt="Grand Theft Auto V">
+            <div class="card-body">
+              <h3 class="card-title">The Last of Us Part II</h3>
+              <p class="price-tag">$30000 <span class="price-unit">/descarga</span></p>
+              <button onclick="agregarJuegoDigital('The Last of Us Part II', 30000)" class="btn btn-primary w-100">Agregar al carrito</button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Juego 6 -->
+        <div class="col-md-6 col-lg-3">
+          <div class="card booking-card h-100 hover-lift">
+            <img src="images/juego6.jpg" class="card-img-top" alt="The Last of Us Part II">
+            <div class="card-body">
+              <h3 class="card-title">The Last of Us Part I</h3>
+              <p class="price-tag">$20000 <span class="price-unit">/descarga</span></p>
+              <button onclick="agregarJuegoDigital('The Last of Us Part I', 20000)" class="btn btn-primary w-100">Agregar al carrito</button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Juego 7 -->
+        <div class="col-md-6 col-lg-3">
+          <div class="card booking-card h-100 hover-lift">
+            <img src="images/juego7.jpg" class="card-img-top" alt="Spider-Man: Miles Morales">
+            <div class="card-body">
+              <h3 class="card-title">Spider-Man: Miles Morales</h3>
+              <p class="price-tag">$32000 <span class="price-unit">/descarga</span></p>
+              <button onclick="agregarJuegoDigital('Spider-Man: Miles Morales', 32000)" class="btn btn-primary w-100">Agregar al carrito</button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Juego 8 -->
+        <div class="col-md-6 col-lg-3">
+          <div class="card booking-card h-100 hover-lift">
+            <img src="images/juego8.png" class="card-img-top" alt="God of War Ragnarök">
+            <div class="card-body">
+              <h3 class="card-title">God of War Ragnarök</h3>
+              <p class="price-tag">$40000 <span class="price-unit">/descarga</span></p>
+              <button onclick="agregarJuegoDigital('God of War Ragnarök', 40000)" class="btn btn-primary w-100">Agregar al carrito</button>
             </div>
           </div>
         </div>
@@ -319,14 +395,15 @@
     </div>
   </section>
 
+
   <!-- Floating Buttons -->
-  <div id="whatsapp-button" class="float-btn pulse">
+  <div id="whatsapp-button" class="float-btn pulse" style="z-index: 9999;">
     <a href="https://wa.me/543513525612" target="_blank" title="WhatsApp" class="text-white">
       <i class="fab fa-whatsapp fa-lg"></i>
     </a>
   </div>
 
-  <div id="instagram-button" class="float-btn pulse">
+  <div id="instagram-button" class="float-btn pulse" style="z-index: 9999;">
     <a href="https://instagram.com/game.house5" target="_blank" title="Instagram" class="text-white">
       <i class="fab fa-instagram fa-lg"></i>
     </a>

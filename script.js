@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
   cargarCarrito();
   actualizarContadorCarrito();
   actualizarTotal();
-  inicializarModales();
 });
 
 // Funciones del carrito
@@ -22,20 +21,19 @@ function agregarAlCarrito(producto, precio) {
   carrito.push(item);
   guardarCarrito();
   mostrarCarrito();
-  mostrarNotificacion('¡Agregado al carrito!');
+  mostrarNotificacion();
 }
 
 function eliminarDelCarrito(index) {
   carrito.splice(index, 1);
   guardarCarrito();
   mostrarCarrito();
-  mostrarNotificacion('Item eliminado', 'warning');
 }
 
 function mostrarCarrito() {
   const lista = document.getElementById('carrito');
   lista.innerHTML = '';
-  
+
   if (carrito.length === 0) {
     lista.innerHTML = '<li class="list-group-item empty-cart">Tu carrito está vacío</li>';
   } else {
@@ -43,33 +41,31 @@ function mostrarCarrito() {
       const li = document.createElement('li');
       li.className = 'list-group-item d-flex justify-content-between align-items-center';
       li.innerHTML = `
-        <span class="cart-item-name">${item.producto}</span>
-        <span class="cart-item-price">$${item.precio}</span>
-        <button onclick="eliminarDelCarrito(${index})" class="btn btn-sm btn-danger">×</button>
+        <span>${item.producto}</span>
+        <span>$${item.precio.toLocaleString()}</span>
+        <button class="btn btn-sm btn-danger" onclick="eliminarDelCarrito(${index})">×</button>
       `;
       lista.appendChild(li);
     });
   }
-  
+
   actualizarContadorCarrito();
   actualizarTotal();
 }
 
 function actualizarContadorCarrito() {
-  const contador = document.getElementById('cart-count');
-  contador.textContent = carrito.length;
+  document.getElementById('cart-count').textContent = carrito.length;
 }
 
 function actualizarTotal() {
   const total = carrito.reduce((sum, item) => sum + item.precio, 0);
-  document.getElementById('total-precio').textContent = `$${total}`;
+  document.getElementById('total-precio').textContent = `$${total.toLocaleString()}`;
 }
 
-// Persistencia del carrito
 function cargarCarrito() {
-  const carritoGuardado = localStorage.getItem('carrito');
-  if (carritoGuardado) {
-    carrito = JSON.parse(carritoGuardado);
+  const datos = localStorage.getItem('carrito');
+  if (datos) {
+    carrito = JSON.parse(datos);
     mostrarCarrito();
   }
 }
@@ -78,152 +74,84 @@ function guardarCarrito() {
   localStorage.setItem('carrito', JSON.stringify(carrito));
 }
 
-// Funciones de reserva
+// Función para calcular horas
+function calcularHoras(inicio, fin) {
+  const [h1, m1] = inicio.split(':').map(Number);
+  const [h2, m2] = fin.split(':').map(Number);
+  const minutos1 = h1 * 60 + m1;
+  const minutos2 = h2 * 60 + m2;
+  return Math.max(1, Math.ceil((minutos2 - minutos1) / 60));
+}
+
+// Funciones de reservas
 function agregarReservaPS4() {
-  const horaInicio = document.getElementById("horaInicio").value;
-  const horaFin = document.getElementById("horaFin").value;
+  const hInicio = document.getElementById("horaInicio").value;
+  const hFin = document.getElementById("horaFin").value;
   const extras = parseInt(document.getElementById("joysticks").value);
+  if (!hInicio || !hFin) return alert("Seleccioná un horario válido");
 
-  if (!horaInicio || !horaFin) {
-    mostrarNotificacion("Por favor, seleccioná un horario válido", "error");
-    return;
-  }
-
-  const horas = calcularHoras(horaInicio, horaFin);
-  
-  if (horas <= 0) {
-    mostrarNotificacion("La hora final debe ser mayor que la inicial", "error");
-    return;
-  }
-
-  const precioTotal = (horas * precios.ps4) + (extras * precios.joystickExtra);
-  const descripcion = `PS4: ${horaInicio} a ${horaFin} (${horas}h) | Joysticks +${extras}`;
-  
-  agregarAlCarrito(descripcion, precioTotal);
+  const horas = calcularHoras(hInicio, hFin);
+  const precio = (horas * precios.ps4) + (extras * precios.joystickExtra);
+  agregarAlCarrito(`Reserva PS4 Pro (${horas}h + ${extras} joystick extra)`, precio);
 }
 
 function agregarReservaSimultaneo() {
-  const horaInicio = document.getElementById("horaInicioSimultaneo").value;
-  const horaFin = document.getElementById("horaFinSimultaneo").value;
+  const hInicio = document.getElementById("horaInicioSimultaneo").value;
+  const hFin = document.getElementById("horaFinSimultaneo").value;
   const extras = parseInt(document.getElementById("joysticksSimultaneo").value);
+  if (!hInicio || !hFin) return alert("Seleccioná un horario válido");
 
-  if (!horaInicio || !horaFin) {
-    mostrarNotificacion("Por favor, seleccioná un horario válido", "error");
-    return;
-  }
-
-  const horas = calcularHoras(horaInicio, horaFin);
-  
-  if (horas <= 0) {
-    mostrarNotificacion("La hora final debe ser mayor que la inicial", "error");
-    return;
-  }
-
-  const precioTotal = (horas * precios.simultaneo) + (extras * precios.joystickExtra);
-  const descripcion = `PS4 Simultáneo: ${horaInicio} a ${horaFin} (${horas}h) | Joysticks +${extras}`;
-  
-  agregarAlCarrito(descripcion, precioTotal);
+  const horas = calcularHoras(hInicio, hFin);
+  const precio = (horas * precios.simultaneo) + (extras * precios.joystickExtra);
+  agregarAlCarrito(`Reserva PS4 Simultáneo (${horas}h + ${extras} joystick extra)`, precio);
 }
 
 function agregarReserva2v2() {
-  const horaInicio = document.getElementById("horaInicio2v2").value;
-  const horaFin = document.getElementById("horaFin2v2").value;
+  const hInicio = document.getElementById("horaInicio2v2").value;
+  const hFin = document.getElementById("horaFin2v2").value;
+  if (!hInicio || !hFin) return alert("Seleccioná un horario válido");
 
-  if (!horaInicio || !horaFin) {
-    mostrarNotificacion("Por favor, seleccioná un horario válido", "error");
-    return;
-  }
-
-  const horas = calcularHoras(horaInicio, horaFin);
-  
-  if (horas <= 0) {
-    mostrarNotificacion("La hora final debe ser mayor que la inicial", "error");
-    return;
-  }
-
-  const precioTotal = horas * precios.dosVsDos;
-  const descripcion = `PS4 2v2: ${horaInicio} a ${horaFin} (${horas}h)`;
-  
-  agregarAlCarrito(descripcion, precioTotal);
+  const horas = calcularHoras(hInicio, hFin);
+  const precio = horas * precios.dosVsDos;
+  agregarAlCarrito(`Reserva PS4 2v2 (${horas}h)`, precio);
 }
 
 function agregarReservaTorneo() {
-  const nombreTorneo = document.getElementById("nombreTorneo").value;
+  const nombre = document.getElementById("nombreTorneo").value;
   const participantes = parseInt(document.getElementById("participantes").value);
+  if (!nombre) return alert("Ingresá el nombre del torneo");
 
-  if (!nombreTorneo) {
-    mostrarNotificacion("Por favor, ingresá un nombre para el torneo", "error");
-    return;
-  }
-
-  const precioTotal = participantes * precios.torneo;
-  const descripcion = `Torneo: ${nombreTorneo} | Participantes: ${participantes}`;
-  
-  agregarAlCarrito(descripcion, precioTotal);
+  const precio = participantes * precios.torneo;
+  agregarAlCarrito(`Inscripción Torneo "${nombre}" (${participantes} participantes)`, precio);
 }
 
-function calcularHoras(horaInicio, horaFin) {
-  const [hIni, mIni] = horaInicio.split(':').map(Number);
-  const [hFin, mFin] = horaFin.split(':').map(Number);
-  let horas = (hFin - hIni) + (mFin - mIni) / 60;
-  if (horas <= 0) horas += 24; // permite reservar entre días
-  return Math.round(horas * 10) / 10;
+// Juegos digitales
+function agregarJuegoDigital(nombre, precio) {
+  agregarAlCarrito(`Juego digital: ${nombre}`, precio);
+  mostrarNotificacion(`¡${nombre} agregado al carrito!`);
 }
 
-// Función para enviar pedido
+// Enviar por WhatsApp
 function enviarPedido() {
   if (carrito.length === 0) {
-    mostrarNotificacion("Tu carrito está vacío", "error");
+    alert("Tu carrito está vacío");
     return;
   }
-  
-  if (confirm("¿Confirmar el envío del pedido?")) {
-    const items = carrito.map(item => `• ${item.producto} - $${item.precio}`).join('\n');
-    const total = carrito.reduce((sum, item) => sum + item.precio, 0);
-    
-    const mensaje = encodeURIComponent(
-      `Hola GAMEHOUSE, quiero reservar:\n${items}\n\n*Total: $${total}*`
-    );
-    
-    window.open(`https://wa.me/543513525612?text=${mensaje}`, '_blank');
-    carrito = [];
-    guardarCarrito();
-    mostrarCarrito();
-    mostrarNotificacion('Pedido enviado con éxito');
-  }
+
+  const mensaje = carrito.map(item => `• ${item.producto} - $${item.precio.toLocaleString()}`).join('\n');
+  const total = carrito.reduce((sum, item) => sum + item.precio, 0);
+  const texto = `Hola, quiero hacer la siguiente reserva:\n\n${mensaje}\n\nTotal: $${total.toLocaleString()}`;
+  const url = `https://wa.me/543513525612?text=${encodeURIComponent(texto)}`;
+
+  window.open(url, '_blank');
 }
 
-// Notificaciones
-function mostrarNotificacion(mensaje, tipo = 'success') {
-  const notif = document.createElement('div');
-  notif.className = `position-fixed bottom-0 end-0 p-3`;
-  notif.innerHTML = `
-    <div class="alert alert-${tipo === 'error' ? 'danger' : tipo} alert-dismissible fade show" role="alert">
-      ${mensaje}
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-  `;
-  document.body.appendChild(notif);
-  
+function mostrarNotificacion(mensaje = '¡Agregado al carrito!') {
+  const noti = document.getElementById('notificacion-carrito');
+  noti.textContent = mensaje;
+  noti.classList.add('mostrar');
+
   setTimeout(() => {
-    notif.remove();
-  }, 3000);
+    noti.classList.remove('mostrar');
+  }, 2500);
 }
-
-// Inicialización de modales
-function inicializarModales() {
-  // Inicializar tooltips si los hay
-  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-    return new bootstrap.Tooltip(tooltipTriggerEl)
-  });
-}
-
-// Efecto parallax para la sección hero
-window.addEventListener('scroll', function() {
-  const hero = document.querySelector('.hero-section');
-  if (hero) {
-    const scrollPosition = window.pageYOffset;
-    hero.style.backgroundPositionY = `${scrollPosition * 0.5}px`;
-  }
-});

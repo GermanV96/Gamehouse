@@ -35,7 +35,7 @@ header {
 }
 
 .logo {
-  height: 50px;
+  height: 40px; /* Ajustado para que el logo no sea demasiado grande */
   width: auto;
   border-radius: 8px;
   object-fit: contain;
@@ -223,7 +223,7 @@ header {
   align-items: center;
   justify-content: center;
   box-shadow: var(--shadow-lg);
-  z-index: 100;
+  z-index: 9999; /* Asegurando que esté por encima de todo */
   transition: var(--transition);
   right: 30px;
 }
@@ -356,6 +356,7 @@ footer {
     padding: 15px;
   }
 }
+
 .navbar-dark .navbar-nav .nav-link {
   color: #ffffff; /* Cambia este valor por el color que prefieras */
 }
@@ -363,4 +364,25 @@ footer {
 .navbar-dark .navbar-nav .nav-link:hover {
   color: #ff9900; /* Color al pasar el mouse */
   opacity: 1;
+}
+
+.toast-carrito {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #28a745;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 5px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+  z-index: 9999;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.4s ease;
+  font-weight: bold;
+}
+
+.toast-carrito.mostrar {
+  opacity: 1;
+  transform: translateY(0);
 }
