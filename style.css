@@ -386,3 +386,39 @@ footer {
   opacity: 1;
   transform: translateY(0);
 }
+
+.carousel {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.carousel-item img {
+  max-height: 500px;
+  object-fit: cover;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.cursor-pointer:hover {
+  transform: scale(1.03);
+}
+
+/* Estilos para el modal de imagen */
+#imagenModal .modal-content {
+  background: transparent;
+  border: none;
+}
+
+#imagenModal .modal-body {
+  padding: 0;
+}
+
+/* Responsive para la galería */
+@media (max-width: 768px) {
+  .carousel-item img {
+    max-height: 350px;
+  }
+}

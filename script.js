@@ -155,3 +155,9 @@ function mostrarNotificacion(mensaje = '¡Agregado al carrito!') {
     noti.classList.remove('mostrar');
   }, 2500);
 }
+
+function abrirImagen(src) {
+  const modal = new bootstrap.Modal(document.getElementById('imagenModal'));
+  document.getElementById('imagenAmpliada').src = src;
+  modal.show();
+}
