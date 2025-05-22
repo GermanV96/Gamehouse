@@ -480,3 +480,17 @@ footer {
   transform: translateY(-5px); /* Se eleva ligeramente */
   box-shadow: var(--shadow-lg); /* Sombra más pronunciada */
 }
+@media (max-width: 576px) {
+  .section-title {
+    font-size: 1.5rem;
+    font-weight: 800; /* Más grueso (rango 600-900 para "Press Start 2P") */
+    text-shadow: 
+      2px 2px 0 var(--primary), /* Sombra más definida */
+      4px 4px 0 rgba(0, 0, 0, 0.3); /* Contraste mejorado */
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    letter-spacing: 1px; /* Ajuste opcional para móviles */
+  }
+}
