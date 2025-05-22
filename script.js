@@ -161,3 +161,17 @@ function abrirImagen(src) {
   document.getElementById('imagenAmpliada').src = src;
   modal.show();
 }
+
+function enviarPedidoJuego() {
+  const juegoPedido = document.getElementById('pedidoJuego').value.trim();
+  
+  if (!juegoPedido) {
+    mostrarNotificacion('Por favor escribí el nombre del juego que querés pedir');
+    return;
+  }
+
+  const texto = `Hola, quisiera pedir el siguiente juego digital:\n\n• ${juegoPedido}\n\nPor favor avísame si lo tienen disponible y cómo puedo adquirirlo. ¡Gracias!`;
+  const url = `https://wa.me/543513525612?text=${encodeURIComponent(texto)}`;
+  
+  window.open(url, '_blank');
+}

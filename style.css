@@ -69,23 +69,6 @@ header {
   z-index: 2;
 }
 
-/* Sections */
-.section-title {
-  text-align: center;
-  margin-bottom: 2rem;
-  font-size: 2rem;
-  color: wht;
-  position: relative;
-}
-
-.section-title::after {
-  content: '';
-  display: block;
-  width: 80px;
-  height: 4px;
-  background-color: var(--accent);
-  margin: 10px auto 0;
-}
 
 /* Cards */
 .card {
@@ -421,4 +404,79 @@ footer {
   .carousel-item img {
     max-height: 350px;
   }
+}
+
+#pedidoJuego {
+  min-height: 100px;
+  border-radius: 8px;
+  border: 2px solid var(--primary);
+  transition: var(--transition);
+}
+
+#pedidoJuego:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 0.25rem rgba(0, 38, 84, 0.25);
+}
+
+.pedido-juego-card {
+  background-color: rgba(0, 38, 84, 0.05);
+  border: 2px dashed var(--primary);
+  transition: var(--transition);
+}
+
+.pedido-juego-card:hover {
+  background-color: rgba(0, 38, 84, 0.1);
+  transform: translateY(-3px);
+}
+
+.section-title {
+  position: relative;
+  display: inline-block;
+  font-family: 'Press Start 2P', cursive, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #fff;
+  text-align: center; /* Asegura el centrado */
+  display: block;     /* Evita que el inline-block afecte el centrado */
+  margin-left: auto;
+  margin-right: auto;
+  text-shadow: 
+    3px 3px 0 var(--primary),
+    6px 6px 0 rgba(0, 0, 0, 0.2);
+  transform: perspective(500px) rotateX(10deg);
+  animation: titlePulse 3s ease-in-out infinite;
+}
+
+@keyframes titlePulse {
+  0%, 100% { 
+    transform: perspective(500px) rotateX(10deg) scale(1); 
+    text-shadow: 
+      3px 3px 0 var(--primary),
+      6px 6px 0 rgba(0, 0, 0, 0.2);
+  }
+  50% { 
+    transform: perspective(500px) rotateX(10deg) scale(1.05);
+    text-shadow: 
+      4px 4px 0 var(--primary-light),
+      8px 8px 0 rgba(0, 0, 0, 0.3);
+  }
+}
+
+.booking-card {
+  padding: 25px;
+  transition: var(--transition); /* Suaviza la animación */
+}
+
+.booking-card:hover {
+  transform: translateY(-5px); /* Se eleva ligeramente */
+  box-shadow: var(--shadow-lg); /* Sombra más pronunciada */
+}
+.booking-card {
+  padding: 25px;
+  transition: var(--transition); /* Suaviza la animación */
+}
+
+.booking-card:hover {
+  transform: translateY(-5px); /* Se eleva ligeramente */
+  box-shadow: var(--shadow-lg); /* Sombra más pronunciada */
 }
